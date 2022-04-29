@@ -18,9 +18,9 @@
 // Default address (Ax = 0b00)
 #define KRKL_BARGRAPH_SA1 0x70
 
-#define KRKL_BIT_R 0x02u
-#define KRKL_BIT_G 0x04u
-#define KRKL_BIT_B 0x01u
+#define KRKL_BIT_R 0x01u
+#define KRKL_BIT_G 0x02u
+#define KRKL_BIT_B 0x04u
 #define KRKL_MASK_RGB1 0x1Cu
 #define KRKL_MASK_RGB2 0xE0u
 #define KRKL_MASK_BARGRAPH 0x3FFu
