@@ -1,30 +1,32 @@
-#include <Wire.h>
-#include <bargraph_krkl.h>
+#include <bg_krkl.h>
 
-// SPECIFIC I2C SLAVE ADDRESS
-#define KRKL_BARGRAPH_CSA1 0x22
-#define KRKL_BARGRAPH_CSA0 0x21
+// SA0 - 0x21, SA1 = 0x22, RST not used
+BG_KRKL bargraph(0x21, 0x22, -1);
+//BG_KRKL bargraph();
 
-int cnt = -2; // Out of bounds check 1
+// Out of bounds check 1
+int cnt = -2;
 
 void setup() {
-  Wire.begin();
-  //bargraph_krkl_init();
-  bargraph_krkl_init(KRKL_BARGRAPH_CSA0, KRKL_BARGRAPH_CSA1);
-  bargraph_krkl_rgb1_out(KRKL_BIT_R | KRKL_BIT_G);
-  bargraph_krkl_rgb2_out(KRKL_BIT_R | KRKL_BIT_B);
+  bargraph.init();
+  bargraph.rgb1(KRKL_BIT_R | KRKL_BIT_G);
+  bargraph.rgb2(KRKL_BIT_R | KRKL_BIT_B);
 }
 
 void loop() {
-  if (cnt >= 11) cnt = 0; // Out of bounds check 2
-  bargraph_krkl_out(cnt++);
-  bargraph_krkl_rgb1_out(KRKL_BIT_B);
+  // Out of bounds check 2
+  if (cnt >= 11) cnt = 0;
+
+  bargraph.bargraph(cnt++);
+  bargraph.rgb1(KRKL_BIT_B);
   delay(500);
-  bargraph_krkl_out(cnt++);
-  bargraph_krkl_rgb2_out(KRKL_BIT_R | KRKL_BIT_G);
+  
+  bargraph.bargraph(cnt++);
+  bargraph.rgb2(KRKL_BIT_R | KRKL_BIT_G);
   delay(500);
-  bargraph_krkl_out(cnt++);
-  bargraph_krkl_rgb1_out(KRKL_BIT_G);
-  bargraph_krkl_rgb2_out(KRKL_BIT_B);
+
+  bargraph.bargraph(cnt++);
+  bargraph.rgb1(KRKL_BIT_G);
+  bargraph.rgb2(KRKL_BIT_B);
   delay(500);
 }
