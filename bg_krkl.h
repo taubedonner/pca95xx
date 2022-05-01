@@ -38,10 +38,13 @@
 class BG_KRKL
 {
     public:
+    // SA0 = 0x73, SA1 = 0x70, RESET = KRKL_PIN_RESET
+    BG_KRKL();
+
     // sa0 - 1st register slave address
     // sa1 - 2nd register slave address
     // resetPin - digital pin of reset signal (if -1, then it will not be used)
-    BG_KRKL(uint8_t sa0 = KRKL_SA0, uint8_t sa1 = KRKL_SA1, int8_t resetPin = KRKL_PIN_RESET);
+    BG_KRKL(uint8_t sa0, uint8_t sa1, int8_t resetPin = KRKL_PIN_RESET);
 
     // Initial configuration for register pins
     void init();

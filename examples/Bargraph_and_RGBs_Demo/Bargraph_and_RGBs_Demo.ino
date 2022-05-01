@@ -2,7 +2,7 @@
 
 // SA0 - 0x21, SA1 = 0x22, RST not used
 BG_KRKL bargraph(0x21, 0x22, -1);
-//BG_KRKL bargraph();
+//BG_KRKL bargraph;
 
 // Out of bounds check 1
 int cnt = -2;

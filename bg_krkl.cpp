@@ -3,6 +3,13 @@
 #include <Wire.h>
 #include "pca95xx.h"
 
+BG_KRKL::BG_KRKL()
+{
+    this->sa0 = KRKL_SA0;
+    this->sa1 = KRKL_SA1;
+    this->resetPin = KRKL_PIN_RESET;
+}
+
 BG_KRKL::BG_KRKL(uint8_t sa0, uint8_t sa1, int8_t resetPin)
 {
     this->sa0 = sa0;
