@@ -24,6 +24,17 @@ bool pca95xx_i2c_receiveData(uint8_t addr)
     return 0;
 }
 
+// Send RESET signal to the register (used with PCA9538)
+void pca95xx_reset(int8_t resetPin)
+{
+    if (resetPin < 0) return;
+    pinMode(resetPin, PCA95XX_PIN_RESET_MODE);
+    digitalWrite(resetPin, LOW);
+    delay(1);
+    digitalWrite(resetPin, HIGH);
+    delay(1);
+}
+
 // All pins in output mode by default
 void pca95xx_configure(uint8_t addr, uint8_t polInv, uint8_t io)
 {

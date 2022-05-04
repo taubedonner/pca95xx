@@ -13,6 +13,10 @@
 #define PCA95XX_POL_DEFAULT_ALL 0x00
 #define PCA95XX_POL_INVERTED_ALL 0xFF
 
+#define PCA95XX_PIN_RESET_MODE OUTPUT
+
+void pca95xx_reset(int8_t resetPin);
+
 void pca95xx_configure(uint8_t addr, uint8_t polInv = PCA95XX_POL_DEFAULT_ALL, uint8_t io = PCA95XX_OUT_ALL);
 
 uint8_t pca95xx_in(uint8_t addr);
