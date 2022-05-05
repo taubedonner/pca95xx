@@ -15,6 +15,7 @@ BG_KRKL::BG_KRKL(uint8_t sa0, uint8_t sa1, int8_t resetPin)
     this->sa0 = sa0;
     this->sa1 = sa1;
     this->resetPin = resetPin;
+    this->regBuffer = KRKL_MASK_BARGRAPH;
 }
 
 void BG_KRKL::rgbCommon(uint8_t rgb, uint8_t offset, uint8_t mask)
