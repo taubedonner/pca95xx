@@ -5,9 +5,7 @@
 
 BG_KRKL::BG_KRKL()
 {
-    this->sa0 = KRKL_SA0;
-    this->sa1 = KRKL_SA1;
-    this->resetPin = KRKL_PIN_RESET;
+    BG_KRKL(KRKL_SA0, KRKL_SA1, KRKL_PIN_RESET);
 }
 
 BG_KRKL::BG_KRKL(uint8_t sa0, uint8_t sa1, int8_t resetPin)
@@ -15,6 +13,7 @@ BG_KRKL::BG_KRKL(uint8_t sa0, uint8_t sa1, int8_t resetPin)
     this->sa0 = sa0;
     this->sa1 = sa1;
     this->resetPin = resetPin;
+    this->regBuffer = KRKL_MASK_BARGRAPH;
 }
 
 void BG_KRKL::rgbCommon(uint8_t rgb, uint8_t offset, uint8_t mask)
@@ -32,6 +31,7 @@ void BG_KRKL::init()
     Wire.begin();
     pca95xx_configure(sa0);
     pca95xx_configure(sa1);
+    bargraph(0);
 }
 
 void BG_KRKL::bargraph(uint8_t level)
